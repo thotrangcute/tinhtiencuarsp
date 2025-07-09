@@ -238,3 +238,77 @@ darkBtn.addEventListener("click", function () {
   darkBtn.classList.add("dark");
   localStorage.setItem("fieerrersay-dark", darkBtn.classList.contains("dark"));
 });
+
+const forgetsection = document.querySelector(".forgetsection");
+const forgetPopup = document.getElementById("forgetPopup");
+const closeForget = document.getElementById("closeForget");
+
+if (forgetsection && forgetPopup) {
+  forgetsection.addEventListener("click", function (e) {
+    e.preventDefault();
+    forgetPopup.style.display = "flex";
+  });
+}
+if (closeForget && forgetPopup) {
+  closeForget.addEventListener("click", function () {
+    forgetPopup.style.display = "none";
+  });
+}
+if (forgetPopup) {
+  forgetPopup.addEventListener("click", function (e) {
+    if (e.target === forgetPopup) {
+      forgetPopup.style.display = "none";
+    }
+  });
+}
+
+const forgetSubmit = document.querySelector(".forget-submit");
+if (forgetSubmit) {
+  forgetSubmit.addEventListener("click", function (e) {
+    e.preventDefault();
+    const forgetEmail = document.querySelector(".forget-email");
+    const forgetName = document.querySelector(".forget-name");
+    const forgetNameNew = document.querySelector(".forget-name-new");
+    const forgetNameAction = document.querySelector(".forget-name-action");
+
+    const emailforgot = forgetEmail.value.trim();
+    const nameforgot = forgetName.value.trim();
+    const nameforgotnew = forgetNameNew.value.trim();
+    const nameforgotaction = forgetNameAction.value.trim();
+
+    const emailFORGOTerror = document.querySelector(".forget-email-error");
+    const nameForgoterror = document.querySelector(".forget-name-error");
+    const namenewforgeterror = document.querySelector(".forget-name-new-error");
+    const nameactionForgoterror = document.querySelector(
+      ".forget-name-action-error"
+    );
+
+    emailFORGOTerror.textContent = "";
+    nameForgoterror.textContent = "";
+    namenewforgeterror.textContent = "";
+    nameactionForgoterror.textContent = "";
+
+    if (!emailforgot) {
+      emailFORGOTerror.textContent = "Hãy nhập email của bạn";
+      return;
+    }
+    if (!nameforgot) {
+      nameForgoterror.textContent = "Hãy nhập mật khẩu mới  của bạn";
+      return;
+    }
+    if (!nameforgotnew) {
+      namenewforgeterror.textContent = "Hãy nhập lại mật khẩu mới  của bạn";
+      return;
+    }
+    if (nameforgot !== nameforgotnew) {
+      namenewforgeterror.textContent = "Mật khẩu nhập lại không khớp ";
+      return;
+    }
+    if (!nameforgotaction) {
+      nameactionForgoterror.textContent = "Hãy nhập mã xác nhận của bạn";
+      return;
+    }
+    alert("Đổi mật khẩu thành công!");
+    forgetPopup.style.display = "none";
+  });
+}
