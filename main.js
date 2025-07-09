@@ -45,7 +45,13 @@ function getCartFromUrlOrLocal() {
   const cart = params.get("cart");
   if (cart) {
     try {
-      return JSON.parse(decodeURIComponent(cart));
+      const decoded = decodeURIComponent(cart);
+      const parsed = JSON.parse(decoded);
+      // Nếu dữ liệu hợp lệ, lưu lại vào localStorage để lần sau không bị mất
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        localStorage.setItem("cartItems", JSON.stringify(parsed));
+      }
+      return parsed;
     } catch (e) {
       return [];
     }
