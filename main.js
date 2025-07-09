@@ -266,7 +266,7 @@ twotitleMuangay.addEventListener("click", function (e) {
 const twotitleReturn = document.querySelectorAll(".twotitle-return");
 twotitleReturn.forEach(function (element) {
   element.addEventListener("click", function () {
-    window.location.href = "https://hien0101.github.io/rimuro/";
+    window.location.href = "https://thotrangcute.github.io/rimuro/";
   });
 });
 
@@ -302,7 +302,7 @@ function renderCartList(cartItems) {
     <div class="cart-item">
       <img src="${imageUrl}" alt="${item.name}"
       onerror="this.onerror=null;this.src='./img/no-image.png';"
-      style="width:60px;height:60px;object-fit:cover;" />
+       />
       <div>
         <h4>${item.name}</h4>
         <p>Giá: ${item.price}</p>

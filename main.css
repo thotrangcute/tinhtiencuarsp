@@ -345,6 +345,15 @@
   align-content: center;
   width: 20px;
 }
+.cart-item {
+  display: flex;
+  gap: 20px;
+}
+.cart-item img {
+  width: 120px;
+  height: 125px;
+  object-fit: cover;
+}
 @media (max-width: 600px) {
   .pay-money {
     flex-direction: column;
