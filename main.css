@@ -137,6 +137,10 @@
   width: 60%;
   margin: 3%;
   border-bottom: 1px solid black;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  max-height: 400px;
 }
 .driver-content {
   color: rgb(32, 112, 231);
@@ -348,6 +352,9 @@
 .cart-item {
   display: flex;
   gap: 20px;
+  background: aliceblue;
+  border: 1px solid #cdcdcd;
+  margin-top: 5px;
 }
 .cart-item img {
   width: 120px;

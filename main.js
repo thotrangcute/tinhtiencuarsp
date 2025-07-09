@@ -65,7 +65,6 @@ function renderCartList(cartItems) {
   }
   cartList.innerHTML = cartItems
     .map((item) => {
-      // Nếu không có ảnh hoặc ảnh lỗi, dùng ảnh mặc định local
       const imageUrl =
         item.images && item.images !== "" ? item.images : "./img/no-image.png";
       return `
@@ -151,29 +150,7 @@ loginSubmit.addEventListener("click", function (e) {
   localStorage.setItem("username", username);
 });
 console.log(loginSubmit);
-/*
-const registerBtn = document.getElementById("registerBtn");
-const registerPopup = document.getElementById("registerPopup");
-const closeRegister = document.getElementById("closeRegister");
 
-// Hiển thị popup khi ấn "Đăng kí"
-registerBtn.addEventListener("click", () => {
-  registerPopup.style.display = "flex";
-});
-
-// Đóng popup khi ấn dấu ×
-closeRegister.addEventListener("click", () => {
-  registerPopup.style.display = "none";
-});
-
-// Đóng popup khi click ra ngoài form
-registerPopup.addEventListener("click", (e) => {
-  if (e.target === registerPopup) {
-    registerPopup.style.display = "none";
-  }
-});
-
-*/
 const secontionRevertime = document.querySelectorAll(".secontion-revertime");
 const registerPopup = document.getElementById("registerPopup");
 const closeRegister = document.getElementById("closeRegister");
@@ -241,18 +218,6 @@ resgisterLogin.addEventListener("click", function (e) {
   alert("chúc mừng bạn đăng ký thành công");
   location.reload();
 });
-/*
-const darkBtn = document.querySelector('.fieerrersay');
-
-// Khi load trang, kiểm tra trạng thái đã lưu
-if (localStorage.getItem('fieerrersay-dark') === 'true') {
-  darkBtn.classList.add('dark');
-}
-
-darkBtn.addEventListener('click', function () {
-  darkBtn.classList.toggle('dark');
-  localStorage.setItem('fieerrersay-dark', darkBtn.classList.contains('dark'));
-});*/
 const darkBtn = document.querySelector(".fieerrersay");
 if (localStorage.getItem("fieerrersay-dark") === "true") {
   darkBtn.classList.add("dark");
