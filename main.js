@@ -156,6 +156,15 @@ loginSubmit.addEventListener("click", function (e) {
     secontionpassError.textContent = "Vui lòng nhập mật khẩu của bạn ";
     return;
   }
+  // Kiểm tra tài khoản đã đăng ký chưa
+  let users = JSON.parse(localStorage.getItem("users") || "[]");
+  const found = users.find(
+    (u) => u.username === username && u.password === password
+  );
+  if (!found) {
+    secontionnameError.textContent = "Tài khoản chưa đăng ký hoặc sai thông tin!";
+    return;
+  }
   loginBtnsision.textContent = username;
   loginPopupsision.style.display = "none";
   localStorage.setItem("username", username);
@@ -190,7 +199,7 @@ resgisterLogin.addEventListener("click", function (e) {
 
   const nameregis = registerName.value.trim();
   const emailregis = registerEmail.value.trim();
-  const writeregis = registerWrite.value.trim();
+  const writeregis = registerWrite.value.trim(); // username
   const numberregis = registerNumber.value.trim();
   const passregis = registerpass.value.trim();
 
@@ -226,6 +235,15 @@ resgisterLogin.addEventListener("click", function (e) {
     registerPasserror.textContnet = "Hãy nhập mật khẩu đủ 8 kí tự  ";
     return;
   }
+  // Lưu tài khoản vào localStorage
+  let users = JSON.parse(localStorage.getItem("users") || "[]");
+  // Kiểm tra trùng username
+  if (users.some((u) => u.username === writeregis)) {
+    registerWriteerror.textContent = "Tên đăng nhập đã tồn tại!";
+    return;
+  }
+  users.push({ username: writeregis, password: passregis });
+  localStorage.setItem("users", JSON.stringify(users));
   alert("chúc mừng bạn đăng ký thành công");
   location.reload();
 });
