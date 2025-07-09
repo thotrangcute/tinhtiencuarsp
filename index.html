@@ -23,170 +23,209 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <title>thanhtoantien</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <title>wed bán hàng </title>
     <link rel="stylesheet" href="./main.css" />
   </head>
   <body>
-    <div class="pay-money">
-      <div class="pay-onetitle">
-        <div class="pay_onetitle-firsttime">
-          <p class="pay-content">InnisFree Theme</p>
-        </div>
-        <div class="pay_onetitle-secondtime">
-          <div class="pay_secondtime-onelist">
-            <div class="pay_secondtime-modor">
-              <p class="pay_moder-content">Thông tin nhận hàng</p>
-              <div class="pay_moder-dirver">
-                <i class="fa fa-user-circle-o"></i>
-                <p class="driver-content" id ="loginButton">Đăng Nhập
-                  <div class="secontion-content" id="loginPopup">
-                    <div class="secontion-title">
-                      <span class="close-btnner" id="closePopup">&times;</span>
-                      <div class="secontion-worders">
-                        <p class="secontion-writetin">Login</p>
-                      </div>
-                      <div class="secontion-fillterion">
-                        <input class="secontion-input-name" type="text" placeholder="Tài Khoản "/>
-                        <div class="error-name secontion-name-error"></div>
-                      </div>
-                      <div class="secontion-password">
-                        <input class="secontion-input-pass" type="password" placeholder="Mật Khẩu"/>
-                        <div class="error-pass secontion-pass-error"></div>
-
-                      </div>
-                      <div class="secontion-fivertion">
-                        <p class="secontion-revertime" >Đăng kí
-                          <div class="register-popup" id="registerPopup">
-                           <div class="register-form">
-                            <span class="close-register" id="closeRegister">&times;</span>
-                            <h2 class="driver-written">Đăng Ký Tài Khoản</h2>
-                            <input class="review register-name" type="text" placeholder="Họ và tên" />
-                             <div class="error-name register-name-error"></div>
-
-                            <input class="review register-email"  type="email" placeholder="Email" />
-                             <div class="error-name register-email-error"></div>
-
-                            <input class="review register-write"  type="text" placeholder="Tên đăng nhập" />
-                             <div class="error-name register-write-error"></div>
-
-                            <input class="review register-number"  type="number" placeholder="Số điện thoại " />
-                             <div class="error-name register-number-error"></div>
-
-                            <input class="review register-pass"  type="password" placeholder="Mật khẩu" />
-                             <div class="error-name register-pass-error"></div>
-
-                             <div class="contetn-check">
-                               <button class="fieerrersay">&#9737;</button>
-                               <p class="check-out">bạn có đồng ý với chính sách của chúng tôi  </p>
-                             </div>
-
-                            <button class="resgister-login">Đăng Ký</button>
-                           </div>
-                          </div>
-                        </p>
-                        <p class="secontion-severtime">Đăng Nhập</p>
-                      </div>
-                      <div class="secontion-forgettime">
-                        <p class="forget-write">Quên mật khẩu thì hãy ấn </p>
-                        <p class="forgetsection"> vô đây !
-                                                  </p>
-                      </div>
-                    </div>
-                  </div>
-                </p>
-              </div>
-            </div>
-           <div class="pay-suborder">
-              <input class="pay-email payer" type="email" placeholder="Email" />
-              <div class="error-message email-error"></div>
-              <input
-                class="pay-name payer"
-                type="text"
-                placeholder="Họ và Tên "
-              />
-              <div class="error-name name-error"></div>
-              <input
-                class="pay-number payer"
-                type="number"
-                placeholder="Số Điện Thoại(tùy chọn)  ; "
-              />
-              <input
-                class="pay-address payer"
-                type="text"
-                placeholder="Địa chỉ (tùy chọn )"
-              />
-              <div class="consaigon-funter">
-                <input
-                  class="pay-addresssever1 payer"
-                  type="text"
-                  placeholder="tỉnh thành  (tùy chọn ) "
-                />
-                <i class="fas fa-caret-down"></i>
-              </div>
-              <div class="error-addresssever1 addresssever1-error"></div>
-              <div class="consaigon-funter sayertime">
-                <input
-                  class="pay-addresssever2 payer"
-                  type="text"
-                  placeholder="Quận Huyện  (tùy chọn )"
-                />
-                <i class="fas fa-caret-down"></i>
-              </div>
-              <div class="consaigon-funter sayertime">
-                <input
-                  class="pay-addressspaye3 payer"
-                  type="text"
-                  placeholder="Phường Xã(tùy chọn )"
-                />
-                <i class="fas fa-caret-down"></i>
-              </div>
-
-              <textarea class="seon-message" placeholder="Nội dung"></textarea>
+    <div class="header">
+      <div class="header_container">
+        <div class="header-content">
+          <div class="content-wire">
+            <div class="content-wire-left">
+              <span class="content-wire-left-text"> InnisFree </span>
             </div>
           </div>
-          <div class="pay_secondtime-twolist">
-            <div class="pay_twolist-onemore">
-              <p class="onemore-content">Vận chuyển</p>
+          <div class="content-write">
+            <div class="content-font-left">
+              <span class="content-cart-left-texts"> Trang Chủ </span>
             </div>
-            <div class="pay_twolist-twomore">
-              <p class="twomore-content">vui lòng nhập địa chỉ vận chuyển</p>
+          </div>
+          <div class="content-write">
+            <div class="content-font-left">
+              <span class="content-cart-left-text"> Liên Hệ </span>
             </div>
-            <div class="pay_twolist-threemore">
-              <div class="threemore-severonetime">
-                <p class="severonetime-content">Thanh Toán</p>
-              </div>
-              <div class="threemore-severtwotime">
-                <p class="severthreetime-content">&#8857;</p>
-                <p class="severtwotime-content">thanh toán giao hàng (COD)</p>
-                <i class="fas fa-caret-down"></i>
-              </div>
+          </div>
+          <div class="content-write">
+            <div class="content-addres-left">
+              <span class="content-addres-left-text">
+                HOTLINE : 1094 4386
+              </span>
+            </div>
+          </div>
+          <div class="content-write">
+            <div class="content-cart-left">
+              <i class="fas fa-shopping-basket" id="cartIconsel">
+                <span id="cart-count-sonnit" class="cart-countteen"></span>
+              </i>
+              <span class="content-cart-left-text" id="filterBtnsel">
+                Giỏ Hàng
+              </span>
             </div>
           </div>
         </div>
-      </div>
-      <div class="pay-twotitle">
-        <div class="twotitle-onepause">
-          <strong>
-            Đơn hàng
-            <span id="cart-count-popup" class="cart-count"></span>
-          </strong>
-        </div>
-        <div class="product-list" id="cart-list"></div>
-        <div class="twotitle-sale">
-          <input
-            class="pay-saleer"
-            type="text"
-            placeholder=" phiếu giảm giá  "
-          />
-          <button class="twotitle-user">áp dụng</button>
-        </div>
-        <div class="twotitle-sum" id="twotitleSum"></div>
-        <div class="twotitle-endding">
-          <button class="twotitle-return">&#10094; quay trở về giỏ hàng</button>
-          <button class="twotitle-muangay">đặt hàng</button>
+        <div class="header-image">
+          <img src="./img/slider_1.webp" alt="header-image" />
         </div>
       </div>
     </div>
+    <div class="ho-teo">
+      <div class="surport">
+        <div class="surport-taitor">
+          <div class="surport-content">
+            <div class="surport-content-image">
+              <img src="./img/policy1.webp" />
+            </div>
+            <div class="surport-content-write">
+              <span class="surport-content-write-text">FREESHIP</span>
+              <p class="surport-content-wiretin-text">miễn phí vẫn chuyển</p>
+            </div>
+          </div>
+          <div class="surport-content">
+            <div class="surport-content-image">
+              <img src="./img/policy2.webp" />
+            </div>
+            <div class="surport-content-write">
+              <span class="surport-content-write-text">HOÀN TRẢ </span>
+              <p class="surport-content-wiretin-text">trong 30 ngày miễn phí</p>
+            </div>
+          </div>
+          <div class="surport-content">
+            <div class="surport-content-image">
+              <img src="./img/policy3.webp" />
+            </div>
+            <div class="surport-content-write">
+              <span class="surport-content-write-text">THANH TOÁN </span>
+              <p class="surport-content-wiretin-text">hỗ trợ hình thức</p>
+            </div>
+          </div>
+          <div class="surport-content">
+            <div class="surport-content-image">
+              <img src="./img/policy4.webp" />
+            </div>
+            <div class="surport-content-write">
+              <span class="surport-content-write-text">HỖ TRỢ </span>
+              <p class="surport-content-wiretin-text">24/7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="danh-sach">
+      <div class="fixx-out">
+        <div class="menu-danh">
+          <div class="menu-danh-sach">
+            <span class="menu-danh-sach-text">Sản phẩm hot</span>
+          </div>
+          <div class="menu-danh-sach">
+            <img src="./img/anh dep.webp" alt="menu-danh-image" />
+          </div>
+          <div class="fonttime-button"></div>
+          <div id="procenter-nice" class="procenter-btn"></div>
+        </div>
+      </div>
+    </div>
+    <div class="setup">
+      <div class="setup-container">
+        <div class="setup-content">
+          <div class="setup-content-siuver">
+            <span class="setup-content-siuver-reiut">Danh Sách Sản Phẩm </span>
+          </div>
+          <div class="setup-content-siuver">
+            <img src="./img/anh dep.webp" alt="setup-content-siuver" />
+          </div>
+          <div id="filter-buttons">
+            <button data-filter="all" class="filter-btn active">Tất Cả</button>
+            <button data-filter="kem-duong-da" class="filter-btn">
+              Kem Dưỡng Da
+            </button>
+            <button data-filter="sua-rua-mat" class="filter-btn">
+              Sữa Rửa Mặt
+            </button>
+            <button data-filter="dau-goi" class="filter-btn">Dầu Gội</button>
+            <button data-filter="sua-tam" class="filter-btn">Sữa Tắm</button>
+          </div>
+
+          <div id="product-list" class="product-list"></div>
+        </div>
+        <div class="setup-content-siuverer">
+          <div class="setup-content-siuver-xiu" id="showMoreBtn">
+            <span class="setup-content-siuver-xiuxiu">Xem thêm</span>
+          </div>
+        </div>
+
+        <div class="product-list" id="hiddenProducts"></div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="page-wrapper">
+        <div class="contact-section">
+          <div class="contact-info">
+            <h1 class="logo">innisfree</h1>
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Tầng 6 tòa nhà Ladeco, 266 Đội Cấn, Ba Đình, Hà Nội</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone-alt"></i>
+              <span>1900 6750</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:support@sapo.vn">support@sapo.vn</a>
+            </div>
+          </div>
+<div class="contact-form">
+  <div class="form-row">
+    <div class="form-group">
+      <input class="seon-name" type="text" placeholder="Họ tên" />
+      <div class="error-message name-error"></div>
+    </div>
+    <div class="form-group">
+      <input class="seoun-email" type="email" placeholder="Email" />
+      <div class="error-message email-error"></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <textarea class="seon-message" placeholder="Nội dung"></textarea>
+    <div class="error-message message-error"></div>
+  </div>
+  <button class="saiontime" type="submit">Gửi</button>
+</div>
+      </div>
+    </div>
+
+    <div class="popup-box" id="popupBox">
+      <strong>
+        Giỏ hàng
+        <i class="fas fa-shopping-basket">
+          <span id="cart-count-popup" class="cart-count"></span>
+        </i>
+      </strong>
+      <p class="wrtiitente"></p>
+      <div class="cart-list"></div>
+      <button class="close-btn" id="closePopup">Đóng</button>
+      <a class="loaddin-content" href="https://hien0101.github.io/thanhtoans/" target="_blank">
+        <button class="order-btn" id="orderPopup">Đặt Hàng</button>
+      </a>
+    </div>
+    <div class="shop-red" id="buttonBox">
+      <div class="shop-ritt">
+        <i class="fas fa-shopping-basket" id="cartIcon">
+          <span id="cart-count-main" class="cart-countter"></span>
+        </i>
+        <button class="btn se" id="filterBtn">&#8743;</button>
+      </div>
+    </div>
+
+    <div class="scroll-return">
+      <div class="return-load">
+        <button class="btn-top" id="filterBtn">&#8743;</button>
+      </div>
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>
