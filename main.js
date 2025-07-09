@@ -71,7 +71,11 @@ function renderCartList(cartItems) {
       const imageUrl =
         item.images && item.images !== "" ? item.images : "./img/no-image.png";
       const quantity = item.quantity || 1;
-      const price = item.price || 0;
+      let price = item.price || 0;
+      if (typeof price === "string") {
+        price = price.replace(/[^\d]/g, "");
+        price = parseInt(price, 10) || 0;
+      }
       total += price * quantity;
       return `
     <div class="cart-item">
@@ -80,7 +84,7 @@ function renderCartList(cartItems) {
        />
       <div>
         <h4>${item.name}</h4>
-        <p>Giá: ${price}</p>
+        <p>Giá: ${item.price}</p>
         <p>Số lượng: ${quantity}</p>
       </div>
     </div>
