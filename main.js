@@ -58,15 +58,21 @@ function getCartFromUrlOrLocal() {
 }
 function renderCartList(cartItems) {
   const cartList = document.getElementById("cart-list");
+  const totalDiv = document.getElementById("twotitleSum");
   if (!cartList) return;
   if (!cartItems.length) {
     cartList.innerHTML = "<p>Chưa có sản phẩm trong giỏ hàng.</p>";
+    if (totalDiv) totalDiv.textContent = "Tổng: 0";
     return;
   }
+  let total = 0;
   cartList.innerHTML = cartItems
     .map((item) => {
       const imageUrl =
         item.images && item.images !== "" ? item.images : "./img/no-image.png";
+      const quantity = item.quantity || 1;
+      const price = item.price || 0;
+      total += price * quantity;
       return `
     <div class="cart-item">
       <img src="${imageUrl}" alt="${item.name}"
@@ -74,13 +80,14 @@ function renderCartList(cartItems) {
        />
       <div>
         <h4>${item.name}</h4>
-        <p>Giá: ${item.price}</p>
-        <p>Số lượng: ${item.quantity || 1}</p>
+        <p>Giá: ${price}</p>
+        <p>Số lượng: ${quantity}</p>
       </div>
     </div>
   `;
     })
     .join("");
+  if (totalDiv) totalDiv.textContent = `Tổng: ${total.toLocaleString()}₫`;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
