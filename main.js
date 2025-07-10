@@ -115,14 +115,11 @@ function renderCartList(cartItems, discount = 0) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Xóa discount khi load trang mới
+  localStorage.removeItem("discountPercent");
+  currentDiscount = 0;
   const cartItems = getCartFromUrlOrLocal();
-  // Check if a discount code was previously applied
-  const savedDiscount = parseInt(
-    localStorage.getItem("discountPercent") || "0",
-    10
-  );
-  currentDiscount = savedDiscount;
-  renderCartList(cartItems, currentDiscount);
+  renderCartList(cartItems, 0);
 
   // Discount code logic
   const discountInput = document.querySelector(".pay-saleer");
