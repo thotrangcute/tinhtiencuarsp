@@ -60,8 +60,8 @@ let currentDiscount = 0;
 let lastCartTotal = 0;
 
 function parseDiscountCode(code) {
-  // Accepts codes like 'sale10%' or 'SALE20%'
-  const match = code.match(/sale(\d+)%/i);
+  // Accepts codes like 'salechobehien10%' or 'salechobehien20%'
+  const match = code.match(/salechobehien(\d+)%/i);
   if (match) {
     return parseInt(match[1], 10);
   }
@@ -108,7 +108,7 @@ function renderCartList(cartItems, discount = 0) {
     const discountAmount = Math.round((total * discount) / 100);
     const discountedTotal = total - discountAmount;
     if (totalDiv)
-      totalDiv.innerHTML = `Tổng: <span style='text-decoration:line-through;color:#888;'>${total.toLocaleString()}₫</span> <span style='color:#e53935;'>${discountedTotal.toLocaleString()}₫</span> <span style='color:#388e3c;'>(-${discount}%)</span>`;
+      totalDiv.innerHTML = `Tổng: <span class='sum-one'>${total.toLocaleString()}₫</span> <span class='sum-two'>${discountedTotal.toLocaleString()}₫</span> <span class='sum-end'>(-${discount}%)</span>`;
   } else {
     if (totalDiv) totalDiv.textContent = `Tổng: ${total.toLocaleString()}₫`;
   }
@@ -117,7 +117,10 @@ function renderCartList(cartItems, discount = 0) {
 document.addEventListener("DOMContentLoaded", function () {
   const cartItems = getCartFromUrlOrLocal();
   // Check if a discount code was previously applied
-  const savedDiscount = parseInt(localStorage.getItem("discountPercent") || "0", 10);
+  const savedDiscount = parseInt(
+    localStorage.getItem("discountPercent") || "0",
+    10
+  );
   currentDiscount = savedDiscount;
   renderCartList(cartItems, currentDiscount);
 
@@ -402,30 +405,30 @@ if (forgetSubmit) {
   });
 }
 
-const userIcon = document.querySelector('.fa-user-circle-o');
-const userMenu = document.getElementById('sectinonwhefasdf');
-const logoutBtn = document.querySelector('.secontioner-close');
+const userIcon = document.querySelector(".fa-user-circle-o");
+const userMenu = document.getElementById("sectinonwhefasdf");
+const logoutBtn = document.querySelector(".secontioner-close");
 
 if (userIcon && userMenu) {
-  userMenu.style.display = 'none';
-  userIcon.addEventListener('click', function (e) {
+  userMenu.style.display = "none";
+  userIcon.addEventListener("click", function (e) {
     e.stopPropagation();
-    if (userMenu.style.display === 'none' || userMenu.style.display === '') {
-      userMenu.style.display = 'block';
+    if (userMenu.style.display === "none" || userMenu.style.display === "") {
+      userMenu.style.display = "block";
     } else {
-      userMenu.style.display = 'none';
+      userMenu.style.display = "none";
     }
   });
   // Ẩn menu khi click ra ngoài
-  document.addEventListener('click', function (e) {
+  document.addEventListener("click", function (e) {
     if (!userMenu.contains(e.target) && e.target !== userIcon) {
-      userMenu.style.display = 'none';
+      userMenu.style.display = "none";
     }
   });
 }
 if (logoutBtn) {
-  logoutBtn.addEventListener('click', function () {
-    localStorage.removeItem('username');
+  logoutBtn.addEventListener("click", function () {
+    localStorage.removeItem("username");
     location.reload();
   });
 }

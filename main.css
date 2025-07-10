@@ -427,6 +427,17 @@
   border-color: #ff0e0e94;
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
+.sum-one {
+  text-decoration: line-through;
+  color: #6d6f6d;
+  margin: 0 3%;
+}
+.sum-two {
+  color: #d51818;
+}
+.sum-end {
+  color: rgb(25, 211, 25);
+}
 @media (max-width: 600px) {
   .pay-money {
     flex-direction: column;
