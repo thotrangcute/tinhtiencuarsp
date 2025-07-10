@@ -1,4 +1,5 @@
 let cardtimeout = JSON.parse(localStorage.getItem("cardtimeout") || "[]");
+
 $(".twotitle-muangay").click(function (e) {
   e.preventDefault();
 
@@ -28,6 +29,7 @@ $(".twotitle-muangay").click(function (e) {
 $(".twotitle-return").click(function () {
   window.location.href = "https://thotrangcute.github.io/rimuro/";
 });
+
 function getCartFromUrlOrLocal() {
   const params = new URLSearchParams(window.location.search);
   const cart = params.get("cart");
@@ -47,11 +49,11 @@ function getCartFromUrlOrLocal() {
 let currentDiscount = 0;
 let lastCartTotal = 0;
 
-// Accepts codes like 'salechobehien10%' or 'salechobehien20%'
 function parseDiscountCode(code) {
-  const match = code.match(/(salechobehien|hiencute|sale)(\\d+)%/i);
+  // Accepts codes like 'salechobehien10%' or 'salechobehien20%'
+  const match = code.match(/salechobehien(\d+)%/i);
   if (match) {
-    return parseInt(match[2], 10);
+    return parseInt(match[1], 10);
   }
   return 0;
 }
