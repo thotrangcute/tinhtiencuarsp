@@ -1,45 +1,33 @@
 let cardtimeout = JSON.parse(localStorage.getItem("cardtimeout") || "[]");
-
-const twotitleMuangay = document.querySelector(".twotitle-muangay");
-twotitleMuangay.addEventListener("click", function (e) {
+$(".twotitle-muangay").click(function (e) {
   e.preventDefault();
-  const payEmail = document.querySelector(".pay-email");
-  const payName = document.querySelector(".pay-name");
-  const payAddresssever1 = document.querySelector(".pay-addresssever1");
 
-  const email = payEmail.value.trim();
-  const name = payName.value.trim();
-  const addresssever1 = payAddresssever1.value.trim();
+  const email = $(".pay-email").val().trim();
+  const name = $(".pay-name").val().trim();
+  const addresssever1 = $(".pay-addresssever1").val().trim();
 
-  const emailerror = document.querySelector(".email-error");
-  const nameerror = document.querySelector(".name-error");
-  const addresssever1error = document.querySelector(".addresssever1-error");
-
-  emailerror.textContent = "";
-  nameerror.textContent = "";
-  addresssever1error.textContent = "";
+  $(".email-error").text("");
+  $(".name-error").text("");
+  $(".addresssever1-error").text("");
 
   if (!email) {
-    emailerror.textContent = "Vui lòng nhập email của bạn ";
+    $(".email-error").text("Vui lòng nhập email của bạn");
     return;
   }
   if (!name) {
-    nameerror.textContent = "Vui lòng nhập  họ và tên của bạn ";
+    $(".name-error").text("Vui lòng nhập  họ và tên của bạn");
     return;
   }
   if (!addresssever1) {
-    addresssever1error.textContent = "Viu lòng nhập địa chỉ của bạn ";
+    $(".addresssever1-error").text("Vui lòng nhập địa chỉ của bạn");
     return;
   }
   alert("bạn đã mua hàng thành công ");
 });
-const twotitleReturn = document.querySelectorAll(".twotitle-return");
-twotitleReturn.forEach(function (element) {
-  element.addEventListener("click", function () {
-    window.location.href = "https://thotrangcute.github.io/rimuro/";
-  });
-});
 
+$(".twotitle-return").click(function () {
+  window.location.href = "https://thotrangcute.github.io/rimuro/";
+});
 function getCartFromUrlOrLocal() {
   const params = new URLSearchParams(window.location.search);
   const cart = params.get("cart");
@@ -59,11 +47,11 @@ function getCartFromUrlOrLocal() {
 let currentDiscount = 0;
 let lastCartTotal = 0;
 
+// Accepts codes like 'salechobehien10%' or 'salechobehien20%'
 function parseDiscountCode(code) {
-  // Accepts codes like 'salechobehien10%' or 'salechobehien20%'
-  const match = code.match([/salechobehien(\d+)%/i] && [/hiencute(\d+)%/i]);
+  const match = code.match(/(salechobehien|hiencute|sale)(\\d+)%/i);
   if (match) {
-    return parseInt(match[1], 10);
+    return parseInt(match[2], 10);
   }
   return 0;
 }
