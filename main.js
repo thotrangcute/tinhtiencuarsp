@@ -56,7 +56,19 @@ function getCartFromUrlOrLocal() {
     return [];
   }
 }
-function renderCartList(cartItems) {
+let currentDiscount = 0;
+let lastCartTotal = 0;
+
+function parseDiscountCode(code) {
+  // Accepts codes like 'sale10%' or 'SALE20%'
+  const match = code.match(/sale(\d+)%/i);
+  if (match) {
+    return parseInt(match[1], 10);
+  }
+  return 0;
+}
+
+function renderCartList(cartItems, discount = 0) {
   const cartList = document.getElementById("cart-list");
   const totalDiv = document.getElementById("twotitleSum");
   if (!cartList) return;
@@ -91,12 +103,46 @@ function renderCartList(cartItems) {
   `;
     })
     .join("");
-  if (totalDiv) totalDiv.textContent = `Tổng: ${total.toLocaleString()}₫`;
+  lastCartTotal = total;
+  if (discount > 0) {
+    const discountAmount = Math.round((total * discount) / 100);
+    const discountedTotal = total - discountAmount;
+    if (totalDiv)
+      totalDiv.innerHTML = `Tổng: <span style='text-decoration:line-through;color:#888;'>${total.toLocaleString()}₫</span> <span style='color:#e53935;'>${discountedTotal.toLocaleString()}₫</span> <span style='color:#388e3c;'>(-${discount}%)</span>`;
+  } else {
+    if (totalDiv) totalDiv.textContent = `Tổng: ${total.toLocaleString()}₫`;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   const cartItems = getCartFromUrlOrLocal();
-  renderCartList(cartItems);
+  // Check if a discount code was previously applied
+  const savedDiscount = parseInt(localStorage.getItem("discountPercent") || "0", 10);
+  currentDiscount = savedDiscount;
+  renderCartList(cartItems, currentDiscount);
+
+  // Discount code logic
+  const discountInput = document.querySelector(".pay-saleer");
+  const discountBtn = document.querySelector(".twotitle-user");
+  if (discountBtn && discountInput) {
+    discountBtn.addEventListener("click", function () {
+      const code = discountInput.value.trim();
+      const percent = parseDiscountCode(code);
+      if (percent > 0) {
+        currentDiscount = percent;
+        localStorage.setItem("discountPercent", percent);
+        renderCartList(getCartFromUrlOrLocal(), currentDiscount);
+        discountInput.style.border = "2px solid #388e3c";
+        discountInput.title = `Đã áp dụng giảm giá ${percent}%`;
+      } else {
+        currentDiscount = 0;
+        localStorage.removeItem("discountPercent");
+        renderCartList(getCartFromUrlOrLocal(), 0);
+        discountInput.style.border = "2px solid #e53935";
+        discountInput.title = "Mã giảm giá không hợp lệ";
+      }
+    });
+  }
 });
 const loginBtn = document.getElementById("loginButton");
 const savedUsername = localStorage.getItem("username");

@@ -538,5 +538,9 @@
   }
   .secontioner-close {
     font-size: 15px;
+    margin-bottom: 5%;
+  }
+  .twotitle-endding {
+    width: 95%;
   }
 }
