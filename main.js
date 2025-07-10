@@ -61,7 +61,7 @@ let lastCartTotal = 0;
 
 function parseDiscountCode(code) {
   // Accepts codes like 'salechobehien10%' or 'salechobehien20%'
-  const match = code.match(/salechobehien(\d+)%/i);
+  const match = code.match([/salechobehien(\d+)%/i] && [/hiencute(\d+)%/i]);
   if (match) {
     return parseInt(match[1], 10);
   }
@@ -120,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
   currentDiscount = 0;
   const cartItems = getCartFromUrlOrLocal();
   renderCartList(cartItems, 0);
-
   // Discount code logic
   const discountInput = document.querySelector(".pay-saleer");
   const discountBtn = document.querySelector(".twotitle-user");
@@ -132,13 +131,11 @@ document.addEventListener("DOMContentLoaded", function () {
         currentDiscount = percent;
         localStorage.setItem("discountPercent", percent);
         renderCartList(getCartFromUrlOrLocal(), currentDiscount);
-        discountInput.style.border = "2px solid #388e3c";
         discountInput.title = `Đã áp dụng giảm giá ${percent}%`;
       } else {
         currentDiscount = 0;
         localStorage.removeItem("discountPercent");
         renderCartList(getCartFromUrlOrLocal(), 0);
-        discountInput.style.border = "2px solid #e53935";
         discountInput.title = "Mã giảm giá không hợp lệ";
       }
     });
