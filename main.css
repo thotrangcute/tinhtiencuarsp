@@ -144,6 +144,10 @@
 .driver-content {
   color: rgb(32, 112, 231);
   cursor: pointer;
+  font-size: 20px;
+}
+.pay_moder-content {
+  font-size: 20px;
 }
 .twotitle-sale {
   margin: 3%;
@@ -410,7 +414,7 @@
   align-items: center;
 }
 .secontioner-close {
-  height: 25px;
+  height: auto;
   color: blue;
   background: #fff;
   border: 1px solid black;
@@ -500,5 +504,36 @@
     align-items: center;
     gap: 15px;
     cursor: pointer;
+  }
+}
+@media (min-width: 600px) and (max-width: 1250px) {
+  .pay_onetitle-secondtime {
+    display: contents;
+  }
+  .pay_secondtime-onelist {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+  }
+  .pay_secondtime-twolist {
+    width: 80%;
+  }
+  .twotitle-onepause {
+    margin: 3% 0;
+    font-size: 25px;
+    border-top: 1px solid black;
+    padding: 3% 0;
+    border-bottom: 1px solid black;
+    width: 95%;
+    text-align: center;
+  }
+  .twotitle-sale {
+    margin: 3%;
+    width: 95%;
+    border-bottom: 1px solid black;
+    padding: 0 0 3%;
+  }
+  .product-list {
+    width: 95%;
   }
 }
