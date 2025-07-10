@@ -355,3 +355,31 @@ if (forgetSubmit) {
     forgetPopup.style.display = "none";
   });
 }
+
+const userIcon = document.querySelector('.fa-user-circle-o');
+const userMenu = document.getElementById('sectinonwhefasdf');
+const logoutBtn = document.querySelector('.secontioner-close');
+
+if (userIcon && userMenu) {
+  userMenu.style.display = 'none';
+  userIcon.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (userMenu.style.display === 'none' || userMenu.style.display === '') {
+      userMenu.style.display = 'block';
+    } else {
+      userMenu.style.display = 'none';
+    }
+  });
+  // Ẩn menu khi click ra ngoài
+  document.addEventListener('click', function (e) {
+    if (!userMenu.contains(e.target) && e.target !== userIcon) {
+      userMenu.style.display = 'none';
+    }
+  });
+}
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', function () {
+    localStorage.removeItem('username');
+    location.reload();
+  });
+}

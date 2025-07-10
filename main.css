@@ -38,8 +38,7 @@
   justify-content: space-between;
   font-size: 25px;
 }
-.pay_moder-dirver,
-.fa-user-circle-o {
+.pay_moder-dirver {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -404,6 +403,26 @@
   font-size: 20px;
   color: #d51818;
 }
+.fa-user-circle-o {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.secontioner-close {
+  height: 25px;
+  color: blue;
+  background: #fff;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.secontioner-close:hover {
+  background-color: #ff0e0e94;
+  color: #ffffff;
+  border-color: #ff0e0e94;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
 @media (max-width: 600px) {
   .pay-money {
     flex-direction: column;
@@ -474,5 +493,12 @@
   .register-form,
   .forget-contect {
     width: 80%;
+  }
+  .fa-user-circle-o {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
   }
 }
