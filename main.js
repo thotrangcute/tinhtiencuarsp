@@ -159,7 +159,11 @@ loginSubmit.addEventListener("click", function (e) {
   // Kiểm tra tài khoản đã đăng ký chưa
   let users = JSON.parse(localStorage.getItem("users") || "[]");
   const found = users.find(
-    (u) => u.username === username && u.password === password
+    (u) =>
+      u.username &&
+      u.password &&
+      u.username === username &&
+      u.password === password
   );
   if (!found) {
     secontionnameError.textContent =
@@ -236,14 +240,18 @@ resgisterLogin.addEventListener("click", function (e) {
     registerPasserror.textContnet = "Hãy nhập mật khẩu đủ 8 kí tự  ";
     return;
   }
-  // Lưu tài khoản vào localStorage
+  // Lưu tài khoản vào localStorage, bao gồm cả email
   let users = JSON.parse(localStorage.getItem("users") || "[]");
   // Kiểm tra trùng username
-  if (users.some((u) => u.username === writeregis)) {
+  if (
+    users.some(function (u) {
+      return u && u.username && u.username === writeregis;
+    })
+  ) {
     registerWriteerror.textContent = "Tên đăng nhập đã tồn tại!";
     return;
   }
-  users.push({ username: writeregis, password: passregis });
+  users.push({ username: writeregis, password: passregis, email: emailregis });
   localStorage.setItem("users", JSON.stringify(users));
   alert("chúc mừng bạn đăng ký thành công");
   location.reload();
@@ -312,12 +320,14 @@ if (forgetSubmit) {
       return;
     }
     let users = JSON.parse(localStorage.getItem("users") || "[]");
-    const foundUser = users.find((u) => u.email === emailforgot);
+    const foundUser = users.find(function (u) {
+      return u && u.email && u.email === emailforgot;
+    });
+
     if (!foundUser) {
-      emailFORGOTerror.textContent = "Email không đúng hoặc chưa đăng ký !";
+      emailFORGOTerror.textContent = "Email không đúng hoặc chưa đăng ký!";
       return;
     }
-
     if (!nameforgot) {
       nameForgoterror.textContent = "Hãy nhập mật khẩu mới  của bạn";
       return;
@@ -334,6 +344,13 @@ if (forgetSubmit) {
       nameactionForgoterror.textContent = "Hãy nhập mã xác nhận của bạn";
       return;
     }
+    // Cập nhật mật khẩu mới cho user
+    users = users.map((u) =>
+      u && u.email && u.email === emailforgot
+        ? { ...u, password: nameforgot }
+        : u
+    );
+    localStorage.setItem("users", JSON.stringify(users));
     alert("Đổi mật khẩu thành công!");
     forgetPopup.style.display = "none";
   });
