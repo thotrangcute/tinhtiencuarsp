@@ -2,6 +2,7 @@ let cardtimeout = JSON.parse(localStorage.getItem("cardtimeout") || "[]");
 
 $(".twotitle-muangay").click(function (e) {
   e.preventDefault();
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const email = $(".pay-email").val().trim();
   const name = $(".pay-name").val().trim();
@@ -11,19 +12,18 @@ $(".twotitle-muangay").click(function (e) {
   $(".name-error").text("");
   $(".addresssever1-error").text("");
 
-  if (!email) {
+  if (!regex.test(email)) {
     $(".email-error").text("Vui lòng nhập email của bạn");
-    return;
   }
   if (!name) {
     $(".name-error").text("Vui lòng nhập  họ và tên của bạn");
-    return;
   }
   if (!addresssever1) {
     $(".addresssever1-error").text("Vui lòng nhập địa chỉ của bạn");
-    return;
+  } else {
+    alert("bạn đã mua hàng thành công ");
   }
-  alert("bạn đã mua hàng thành công ");
+  return;
 });
 
 $(".twotitle-return").click(function () {
@@ -230,6 +230,9 @@ registerPopup.addEventListener("click", (e) => {
 const resgisterLogin = document.querySelector(".resgister-login");
 resgisterLogin.addEventListener("click", function (e) {
   e.preventDefault();
+
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const registerName = document.querySelector(".register-name");
   const registerEmail = document.querySelector(".register-email");
   const registerWrite = document.querySelector(".register-write");
@@ -258,9 +261,8 @@ resgisterLogin.addEventListener("click", function (e) {
     registerNameerror.textContent = "Vui lòng nhập thông tin têm bạn ";
     return;
   }
-  if (!emailregis) {
-    registerEmailerror.textContent = "Vui lòng nhập email của bạn  ";
-    return;
+  if (!regex.test(emailregis)) {
+    registerEmailerror.textContent = "Vui lòng nhập email của bạn";
   }
   if (!writeregis) {
     registerWriteerror.textContent = "Vui lòng nhập tên đăng nhập của bạn ";
