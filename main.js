@@ -203,6 +203,7 @@ loginSubmit.addEventListener("click", function (e) {
       "Tài khoản chưa đăng ký hoặc sai thông tin!";
     return;
   }
+  console.log(password);
   loginBtnsision.textContent = username;
   loginPopupsision.style.display = "none";
   localStorage.setItem("username", username);
