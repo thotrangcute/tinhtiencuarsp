@@ -88,7 +88,7 @@
   font-size: 15px;
 }
 .pay_secondtime-twolist {
-  width: 30%;
+  width: 35%;
 }
 .threemore-severtwotime {
   height: 50px;
@@ -157,7 +157,7 @@
 }
 .pay-saleer {
   height: 50px;
-  width: 70%;
+  width: 65%;
 }
 .twotitle-user {
   height: 56px;
@@ -365,8 +365,8 @@
   margin-top: 5px;
 }
 .cart-item img {
-  width: 120px;
-  height: 125px;
+  width: 40%;
+  height: 190px;
   object-fit: cover;
 }
 .twotitle-sum {
