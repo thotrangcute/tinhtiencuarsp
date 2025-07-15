@@ -175,6 +175,13 @@
   border: none;
   background: none;
   cursor: pointer;
+  border: 1px solid #b5b5b5;
+  border-radius: 5px;
+}
+.twotitle-return:hover {
+  background: #0087ffa3;
+  color: #ffffff;
+  transition: background 0.3s, color 0.3s, border;
 }
 .twotitle-muangay {
   background: rgb(7 136 255 / 76%);
@@ -182,6 +189,7 @@
   border: none;
   width: 30%;
   font-size: 18px;
+  border-radius: 8px;
 }
 .error-message,
 .error-name,
